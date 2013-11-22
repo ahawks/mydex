@@ -1,4 +1,5 @@
 import serial
+from serial.tools import list_ports
 import struct
 import crc16
 import glob
@@ -23,12 +24,17 @@ def find_receiver():
     """
     Returns the /dev/tty.usbmodem* filename for the attached receiver
     """
-    matches = glob.glob('/dev/tty.usbmodem*')
-    if matches:
-        return matches[0]
-    else:
-        raise Exception('No receiver connected')
+    ports = list_ports.comports()
+    for p in ports:
+        if 'DexCom' in p[1]:
+            return p[0]
 
+    #matches = glob.glob('/dev/tty.usbmodem*')
+    # if matches:
+    #     return matches[0]
+    # else:
+    #     raise Exception('No receiver connected')
+    
 
 def send(ser, value):
     packet = [1, value, 0, 0]
