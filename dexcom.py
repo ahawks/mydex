@@ -13,7 +13,7 @@ baud_rates = {
 
 def connect(mode='firmware'):
     port = find_receiver()
-    ser = serial.Serial(port, baud_rates.get(mode), timeout=1)
+    ser = serial.Serial(port, baud_rates.get(mode), timeout=2)
     if not ser.isOpen():
         raise Exception("Receiver not connected!")
     return ser
@@ -39,25 +39,26 @@ def send(ser, value):
         [ord(x) for x in byte_str],
         len(byte_str))
     r = ser.write(byte_str)
+    ser.flush()
     print 'Sent %s bytes' % r
 
 
 def read(ser):
     print 'Trying to read....'
-    r = ser.read(10)
+    r = ser.read(100)
     return [ord(x) for x in r]
 
 
 def close(ser):
     ser.close()
 
-
-if __name__ == '__main__':
+def full_test():
     ser = connect()
-    send(ser, c.READ_TRANSMITTER_ID)
-
+    send(ser, c.READ_LOW_GLUCOSE_THRESHOLD)
     print read(ser)
 
+if __name__ == '__main__':
+    full_test()
 # references:
 # http://eli.thegreenplace.net/2009/08/20/frames-and-protocols-for-the-serial-port-in-python/
 # https://pypi.python.org/pypi/crc16/0.1.1
