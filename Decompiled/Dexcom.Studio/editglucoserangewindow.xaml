@@ -1,0 +1,83 @@
+<Window x:Class="Dexcom.Tools.DataManager.EditGlucoseRangeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:dexclient="clr-namespace:Dexcom.Client.Common;assembly=Dexcom.Client.Common"
+        x:Name="thisWindow" Title="Edit Glucose Range" Height="Auto" Width="Auto" MinWidth="400"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Icon="/Dexcom.Studio;component/App.ico" Background="{DynamicResource LightBrush}"
+        WindowStyle="ToolWindow" FontSize="12"
+        FocusManager.FocusedElement="{Binding ElementName=m_ctrlName}">
+  <UIElement.InputBindings>
+    <KeyBinding Command="Close" Key="Esc"/>
+    <KeyBinding Command="Save" Key="Enter"/>
+  </UIElement.InputBindings>
+  <UIElement.CommandBindings>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Close}"/>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Save}"/>
+  </UIElement.CommandBindings>
+  <FrameworkElement.Resources>
+    <dexclient:ResourceDictionaryConverter x:Key="ResourceDictionaryConverter"/>
+  </FrameworkElement.Resources>
+  <Grid>
+    <StackPanel Orientation="Vertical">
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,4,0,0">
+        <Border Name="m_ctrlNameError" BorderBrush="Red" CornerRadius="2,2,2,2" BorderThickness="1"
+                VerticalAlignment="Bottom">
+          <StackPanel Orientation="Vertical">
+            <TextBlock Name="m_ctrlNameLabel" Margin="4,0,0,0"
+                       Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Name, FallbackValue=Name}"/>
+            <TextBox TextChanged="m_ctrlName_TextChanged" Name="m_ctrlName" MinWidth="100" MaxLength="25"
+                     VerticalAlignment="Bottom" Margin="4"/>
+          </StackPanel>
+        </Border>
+        <ComboBox SelectionChanged="m_ctrlMinRangeOp_SelectionChanged" Name="m_ctrlMinRangeOp" MinWidth="45"
+                  VerticalAlignment="Bottom" Margin="4,4,4,5" DisplayMemberPath="Key"/>
+        <Border Name="m_ctrlMinValueError" BorderBrush="Red" CornerRadius="2,2,2,2" BorderThickness="1"
+                VerticalAlignment="Bottom">
+          <StackPanel Orientation="Vertical">
+            <TextBlock Name="m_ctrlMinValueLabel" Margin="4,0,0,0"
+                       Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Min, FallbackValue=Min}"/>
+            <ComboBox SelectionChanged="m_ctrlMinValue_SelectionChanged" Name="m_ctrlMinValue" MinWidth="60"
+                      VerticalAlignment="Bottom" Margin="4" DisplayMemberPath="Key" IsEditable="true"
+                      SelectedValuePath="Value"/>
+          </StackPanel>
+        </Border>
+        <TextBlock Name="m_ctrlAndLabel" VerticalAlignment="Bottom" Margin="4,4,4,8"
+                   Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_and, FallbackValue=and}"/>
+        <ComboBox SelectionChanged="m_ctrlMaxRangeOp_SelectionChanged" Name="m_ctrlMaxRangeOp" MinWidth="45"
+                  VerticalAlignment="Bottom" Margin="4,4,4,5" DisplayMemberPath="Key"/>
+        <Border Name="m_ctrlMaxValueError" BorderBrush="Red" CornerRadius="2,2,2,2" BorderThickness="1"
+                VerticalAlignment="Bottom">
+          <StackPanel Orientation="Vertical">
+            <TextBlock Name="m_ctrlMaxValueLabel" Margin="4,0,0,0"
+                       Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Max, FallbackValue=Max}"/>
+            <ComboBox SelectionChanged="m_ctrlMaxValue_SelectionChanged" Name="m_ctrlMaxValue" MinWidth="60"
+                      VerticalAlignment="Bottom" Margin="4" DisplayMemberPath="Key" IsEditable="true"
+                      SelectedValuePath="Value"/>
+          </StackPanel>
+        </Border>
+      </StackPanel>
+      <DockPanel Margin="0,4,0,0" LastChildFill="true">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+          <Button MinWidth="80" Padding="6,3" Margin="4" Command="Save" VerticalAlignment="Center"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Save, FallbackValue=Save}"/>
+          <Button MinWidth="80" Padding="6,3" Margin="4" Command="Close" VerticalAlignment="Center"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Cancel, FallbackValue=Cancel}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+          <Button Click="m_ctrlQuickPick_Click" Name="m_ctrlQuickPick" MinWidth="80" Padding="6,3" Margin="4"
+                  VerticalAlignment="Center"
+                  ToolTip="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=EditGlucoseRangeWindow_QuickPickToolTip, FallbackValue='Select from predefined target glucose ranges.'}"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=EditGlucoseRangeWindow_QuickPick, FallbackValue='Quick Pick'}"/>
+          <Button Click="m_ctrlDefault_Click" Name="m_ctrlDefault" MinWidth="80" Padding="6,3" Margin="4"
+                  VerticalAlignment="Center"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Default, FallbackValue=Default}"/>
+        </StackPanel>
+        <Grid/>
+      </DockPanel>
+    </StackPanel>
+  </Grid>
+</Window>

@@ -1,0 +1,236 @@
+<Window x:Class="Dexcom.Tools.DataManager.EditPatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:dexclient="clr-namespace:Dexcom.Client.Common;assembly=Dexcom.Client.Common"
+        x:Name="thisWindow" Title="Edit Patient" Height="Auto" Width="Auto" MinWidth="310"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Icon="/Dexcom.Studio;component/App.ico" Background="{DynamicResource LightBrush}"
+        WindowStyle="ToolWindow" FontSize="12"
+        FocusManager.FocusedElement="{Binding ElementName=m_ctrlPatientIdentifier}">
+  <UIElement.InputBindings>
+    <KeyBinding Command="Close" Key="Esc"/>
+    <KeyBinding Command="Save" Key="Enter"/>
+  </UIElement.InputBindings>
+  <UIElement.CommandBindings>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Close}"/>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Save}"/>
+  </UIElement.CommandBindings>
+  <FrameworkElement.Resources>
+    <dexclient:DateTimeConverter x:Key="DateTimeConverter"/>
+    <dexclient:ResourceDictionaryConverter x:Key="ResourceDictionaryConverter"/>
+  </FrameworkElement.Resources>
+  <Grid>
+    <StackPanel Orientation="Vertical" Margin="6">
+      <Grid Name="PatientProperties">
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" MinWidth="140"/>
+          <ColumnDefinition Width="*" MinWidth="140"/>
+        </Grid.ColumnDefinitions>
+        <Label Tag="PatientIdentifier" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_PatientIdentifier, FallbackValue='Patient Identifier'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Name="m_ctrlPatientIdentifier" Grid.Column="1"
+                 Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2,0,0,1"
+                 MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="PatientIdentifier" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="FirstName" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_FirstName, FallbackValue='First Name'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="MiddleName" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_MiddleName, FallbackValue='Middle Name'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="MiddleName" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="LastName" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_LastName, FallbackValue='Last Name'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="Initials" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_Initials, FallbackValue=Initials}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="5">
+          <TextBox.Text>
+            <Binding Path="Initials" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="DisplayName" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_DisplayName, FallbackValue=Nickname}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="DisplayName" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="DoctorsName" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_DoctorsName, FallbackValue='Doctors Name'}"/>
+        <ComboBox SelectionChanged="m_ctrlDoctorsName_SelectionChanged" KeyUp="m_ctrlDoctorsName_KeyUp"
+                  Name="m_ctrlDoctorsName" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center"
+                  HorizontalAlignment="Stretch" Margin="2,0,0,1" IsEditable="true"
+                  ItemsSource="{Binding Path=DoctorNames, Mode=OneWay, ElementName=thisWindow}"/>
+        <Label Tag="PatientNumber" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_PatientNumber, FallbackValue='Patient Number'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="10">
+          <TextBox.Text>
+            <Binding Path="PatientNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"
+                     ValidatesOnExceptions="true" FallbackValue="0"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="OtherIdentifier" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_OtherIdentifier, FallbackValue='Other Identifier'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="8" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="50">
+          <TextBox.Text>
+            <Binding Path="OtherIdentifier" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="DateOfBirth" Grid.Column="0" Grid.Row="9" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_DateOfBirth, FallbackValue='Date of Birth'}"/>
+        <DatePicker SourceUpdated="DoMarkDirtyOnSourceUpdated" Name="m_ctrlDateOfBirth" Grid.Column="1" Grid.Row="9"
+                    VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2,0,0,1"
+                    SelectedDateFormat="Short">
+          <DatePicker.SelectedDate>
+            <Binding Path="DateOfBirth" NotifyOnSourceUpdated="true" Converter="{StaticResource DateTimeConverter}"/>
+          </DatePicker.SelectedDate>
+        </DatePicker>
+        <Label Tag="Gender" Grid.Column="0" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_Gender, FallbackValue=Gender}"/>
+        <ComboBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Name="m_ctrlGender" Grid.Column="1" Grid.Row="10"
+                  VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="2,0,0,1" SelectedValuePath="Tag">
+          <Selector.SelectedValue>
+            <Binding Path="Gender" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </Selector.SelectedValue>
+          <ComboBoxItem Tag="Unknown"
+                        Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Unknown, FallbackValue=Unknown}"/>
+          <ComboBoxItem Tag="Male"
+                        Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Male, FallbackValue=Male}"/>
+          <ComboBoxItem Tag="Female"
+                        Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Female, FallbackValue=Female}"/>
+        </ComboBox>
+        <Label Tag="EMail" Grid.Column="0" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_EMailAddress, FallbackValue='E-Mail Address'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="11" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="100">
+          <TextBox.Text>
+            <Binding Path="EMail" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="PhoneNumber" Grid.Column="0" Grid.Row="12" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_PhoneNumber, FallbackValue='Phone Number'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="12" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="25">
+          <TextBox.Text>
+            <Binding Path="PhoneNumber" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="PhoneExtension" Grid.Column="0" Grid.Row="13" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_PhoneExtension, FallbackValue='Phone Extension'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="13" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="10">
+          <TextBox.Text>
+            <Binding Path="PhoneExtension" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="SiteIdentifier" Grid.Column="0" Grid.Row="14" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_SiteIdentifier, FallbackValue='Site Identifier'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="14" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="25">
+          <TextBox.Text>
+            <Binding Path="SiteIdentifier" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Tag="StudyIdentifier" Grid.Column="0" Grid.Row="15" VerticalAlignment="Center"
+               HorizontalAlignment="Right" Margin="0,0,2,0"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_StudyIdentifier, FallbackValue='Study Identifier'}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="15" VerticalAlignment="Center"
+                 HorizontalAlignment="Stretch" Margin="2,0,0,1" MaxLength="25">
+          <TextBox.Text>
+            <Binding Path="StudyIdentifier" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="0" Grid.Row="16" VerticalAlignment="Center" HorizontalAlignment="Right"
+               Margin="0,0,2,0"
+               ToolTip="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_KeepPrivateToolTip, FallbackValue='Check this option to remove patient identifying information when patient file is exported.'}"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_KeepPatientPrivate, FallbackValue='Keep Private'}"/>
+        <CheckBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Grid.Column="1" Grid.Row="16" VerticalAlignment="Center"
+                  HorizontalAlignment="Stretch" Margin="2,6,0,6">
+          <ToggleButton.IsChecked>
+            <Binding Path="KeepPrivate" ElementName="thisWindow" UpdateSourceTrigger="PropertyChanged"
+                     NotifyOnSourceUpdated="true"/>
+          </ToggleButton.IsChecked>
+        </CheckBox>
+        <StackPanel Grid.Row="17" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+          <Button MinWidth="100" Padding="6,3" Margin="4" Command="Save" VerticalAlignment="Center"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_OK, FallbackValue=OK}"/>
+          <Button MinWidth="100" Padding="6,3" Margin="4" Command="Close" VerticalAlignment="Center"
+                  Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Cancel, FallbackValue=Cancel}"/>
+        </StackPanel>
+      </Grid>
+      <StackPanel Orientation="Vertical">
+        <Label Tag="Comments"
+               Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=PatientInfo_Comments, FallbackValue=Comments}"/>
+        <TextBox SourceUpdated="DoMarkDirtyOnSourceUpdated" Name="m_ctrlComments" VerticalAlignment="Stretch"
+                 MinHeight="56" MaxHeight="150" TextWrapping="Wrap" BorderThickness="3"
+                 VerticalScrollBarVisibility="Auto" MaxLength="500"
+                 MaxWidth="{Binding ElementName=PatientProperties, Path=ActualWidth}">
+          <TextBox.Text>
+            <Binding Path="Comments" UpdateSourceTrigger="PropertyChanged" NotifyOnSourceUpdated="true"/>
+          </TextBox.Text>
+        </TextBox>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</Window>

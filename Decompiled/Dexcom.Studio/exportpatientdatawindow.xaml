@@ -1,0 +1,72 @@
+<Window x:Class="Dexcom.Tools.DataManager.ExportPatientDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:dexclient="clr-namespace:Dexcom.Client.Common;assembly=Dexcom.Client.Common"
+        x:Name="thisWindow" Title="Export Patient Data" Height="Auto" Width="Auto" MinWidth="400"
+        MinHeight="200" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
+        Icon="/Dexcom.Studio;component/App.ico" Background="{DynamicResource LightBrush}"
+        WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" FontSize="12">
+  <UIElement.InputBindings>
+    <KeyBinding Command="Close" Key="Esc"/>
+    <KeyBinding Command="Save" Key="Enter"/>
+  </UIElement.InputBindings>
+  <UIElement.CommandBindings>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Close}"/>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Save}"/>
+  </UIElement.CommandBindings>
+  <FrameworkElement.Resources>
+    <dexclient:ResourceDictionaryConverter x:Key="ResourceDictionaryConverter"/>
+  </FrameworkElement.Resources>
+  <Grid>
+    <DockPanel Margin="6" LastChildFill="true">
+      <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+        <Button MinWidth="100" Padding="6,3" Margin="4" Command="Save" VerticalAlignment="Center"
+                Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_OK, FallbackValue=OK}"/>
+        <Button MinWidth="100" Padding="6,3" Margin="4" Command="Close" VerticalAlignment="Center"
+                Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=Common_Cancel, FallbackValue=Cancel}"/>
+      </StackPanel>
+      <Border HorizontalAlignment="Stretch" BorderThickness="1" CornerRadius="8"
+              BorderBrush="{Binding ElementName=m_ctrlSeparatorLine, Path=Background}">
+        <StackPanel Orientation="Vertical">
+          <Label Name="m_ctrlPromptMessage" Margin="4"
+                 Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_SelectDates, FallbackValue='Select Dates'}"/>
+          <Separator Name="m_ctrlSeparatorLine"/>
+          <RadioButton Checked="m_ctrlExportAll_Checked" Name="m_ctrlExportAll" GroupName="SelectOption" Margin="4"
+                       Padding="6,0,6,0" IsChecked="True"
+                       Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_ExportAll, FallbackValue='Export All'}"/>
+          <StackPanel Orientation="Horizontal">
+            <RadioButton Checked="m_ctrlExportLastWeeks_Checked" Name="m_ctrlExportLastWeeks" GroupName="SelectOption"
+                         Margin="4" Padding="6,0,0,0" IsChecked="False"
+                         Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_NumberOfWeeks, FallbackValue='Number of Weeks'}"/>
+            <ComboBox SelectionChanged="m_ctrlLastWeeks_SelectionChanged" Name="m_ctrlLastWeeks" Margin="4,0,0,0"
+                      MinWidth="60" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}"/>
+          </StackPanel>
+          <StackPanel Orientation="Vertical">
+            <RadioButton Checked="m_ctrlExportCustom_Checked" Name="m_ctrlExportCustom" GroupName="SelectOption" Margin="4"
+                         Padding="6,0,0,0" IsChecked="False"
+                         Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_CustomDates, FallbackValue='Custom Dates'}"/>
+            <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+              <StackPanel Orientation="Horizontal" Margin="4">
+                <CheckBox Checked="m_ctrlStartDateOption_Checked" Unchecked="m_ctrlStartDateOption_Unchecked"
+                          Name="m_ctrlStartDateOption" Margin="4" Padding="6,0,0,0" IsChecked="False"
+                          Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_StartDate, FallbackValue='Start Date'}"/>
+                <DatePicker SelectedDateChanged="m_ctrlStartDate_SelectedDateChanged" Name="m_ctrlStartDate"
+                            SelectedDateFormat="Short" Padding="4" BorderThickness="0"/>
+              </StackPanel>
+              <StackPanel Orientation="Horizontal" Margin="4">
+                <CheckBox Checked="m_ctrlFinishDateOption_Checked" Unchecked="m_ctrlFinishDateOption_Unchecked"
+                          Name="m_ctrlFinishDateOption" Margin="4" Padding="6,0,0,0" IsChecked="False"
+                          Content="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=ExportPatientDataWindow_FinishDate, FallbackValue='Finish Date'}"/>
+                <DatePicker SelectedDateChanged="m_ctrlFinishDate_SelectedDateChanged" Name="m_ctrlFinishDate"
+                            SelectedDateFormat="Short" Padding="4" BorderThickness="0"/>
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </DockPanel>
+  </Grid>
+</Window>

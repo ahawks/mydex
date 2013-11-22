@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Program Files (x86)\Dexcom\Dexcom Studio 12.0.3.43\Dexcom.R2ReceiverApi.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D7ED8D30-2192-463E-B122-5223AC8AB9E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Dexcom.R2ReceiverApi</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>4.0.0.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Dexcom.R2Receiver</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dexcom.Common">
+      <HintPath>lib\Dexcom.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Dexcom.Common.Data">
+      <HintPath>lib\Dexcom.Common.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API.cs" />
+    <Compile Include="UsbComPort.cs" />
+    <Compile Include="R2BlockHeader.cs" />
+    <Compile Include="R2RecordHeader.cs" />
+    <Compile Include="R2DatabaseKey.cs" />
+    <Compile Include="R2DatabaseBlockPrefix.cs" />
+    <Compile Include="R2DatabaseRecordPrefix.cs" />
+    <Compile Include="R2RecordFooter.cs" />
+    <Compile Include="R2RecordFooterUpdateable.cs" />
+    <Compile Include="R2RecordFooterUpdateableWithCrc.cs" />
+    <Compile Include="R2ErrorLogInfo.cs" />
+    <Compile Include="IGenericR2Record.cs" />
+    <Compile Include="R2ErrorLogHeader.cs" />
+    <Compile Include="R2ErrorLogRecord.cs" />
+    <Compile Include="R2ErrorLog2Record.cs" />
+    <Compile Include="R2LogRecord.cs" />
+    <Compile Include="R2EventRecord.cs" />
+    <Compile Include="R2MeterRecord.cs" />
+    <Compile Include="R2Meter2Record.cs" />
+    <Compile Include="R2SensorRecord.cs" />
+    <Compile Include="R2Sensor2Record.cs" />
+    <Compile Include="R2MatchedPairRecord.cs" />
+    <Compile Include="R2SettingsRecord.cs" />
+    <Compile Include="R2Settings2Record.cs" />
+    <Compile Include="R2Settings3Record.cs" />
+    <Compile Include="R2Settings4Record.cs" />
+    <Compile Include="R2Settings5Record.cs" />
+    <Compile Include="R2Settings6Record.cs" />
+    <Compile Include="R2STSCalibration1Record.cs" />
+    <Compile Include="R2STSCalibration2Record.cs" />
+    <Compile Include="R2STSCalibration3Record.cs" />
+    <Compile Include="R2STSCalibration4Record.cs" />
+    <Compile Include="R2MatchedPairData.cs" />
+    <Compile Include="R2STSCalibration5Record.cs" />
+    <Compile Include="R2Reserved0x02Record.cs" />
+    <Compile Include="R2Reserved0x0ERecord.cs" />
+    <Compile Include="R2Reserved0x0FRecord.cs" />
+    <Compile Include="R2HWConfig.cs" />
+    <Compile Include="R2HWConfigHeader.cs" />
+    <Compile Include="R2HWConfigV2.cs" />
+    <Compile Include="R2HWConfigV3.cs" />
+    <Compile Include="R2HWConfigV4.cs" />
+    <Compile Include="R2HWConfigV5.cs" />
+    <Compile Include="R2HWConfigV6.cs" />
+    <Compile Include="R2HWConfigV7.cs" />
+    <Compile Include="R2BiosHeader.cs" />
+    <Compile Include="R2FWHeader.cs" />
+    <Compile Include="R2FWHeaderVer2.cs" />
+    <Compile Include="R2FWHeaderVer3.cs" />
+    <Compile Include="R2RFTestPacket.cs" />
+    <Compile Include="Win32PortIO.cs" />
+    <Compile Include="SensorSession.cs" />
+    <Compile Include="IGenericRecord.cs" />
+    <Compile Include="MatchedPair.cs" />
+    <Compile Include="MatchedPairStat.cs" />
+    <Compile Include="R2BlockInfo.cs" />
+    <Compile Include="R2DatabaseParserBase.cs" />
+    <Compile Include="R2BlockInfoParser.cs" />
+    <Compile Include="MatchRecordByKeyPredicate`1.cs" />
+    <Compile Include="RecordIndex.cs" />
+    <Compile Include="R2DatabaseRecords.cs" />
+    <Compile Include="R2DatabaseRecordsParser.cs" />
+    <Compile Include="XR2HardwareConfig.cs" />
+    <Compile Include="GenericRecord.cs" />
+    <Compile Include="ErrorLogRecord.cs" />
+    <Compile Include="LogRecord.cs" />
+    <Compile Include="EventRecord.cs" />
+    <Compile Include="MeterRecord.cs" />
+    <Compile Include="SensorRecord.cs" />
+    <Compile Include="Sensor2Record.cs" />
+    <Compile Include="MatchedPairRecord.cs" />
+    <Compile Include="SettingsRecord.cs" />
+    <Compile Include="STSCalibrationRecord.cs" />
+    <Compile Include="STSCalibration5Record.cs" />
+    <Compile Include="STSCalibration4Record.cs" />
+    <Compile Include="HardwareConfiguration.cs" />
+    <Compile Include="R2RecordType.cs" />
+    <Compile Include="R2RecordTypeFlag.cs" />
+    <Compile Include="R2HardwareFlags.cs" />
+    <Compile Include="R2FirmwareFlags.cs" />
+    <Compile Include="R2BootFailureReasons.cs" />
+    <Compile Include="R2LogEventType.cs" />
+    <Compile Include="R2EventRecordType.cs" />
+    <Compile Include="R2ExerciseType.cs" />
+    <Compile Include="R2HealthType.cs" />
+    <Compile Include="R2MeterType.cs" />
+    <Compile Include="RFWindowMode.cs" />
+    <Compile Include="R2ScreenType.cs" />
+    <Compile Include="R2MeterFlags.cs" />
+    <Compile Include="R2AlgorithmState.cs" />
+    <Compile Include="R2Commands.cs" />
+    <Compile Include="R2ButtonFlags.cs" />
+    <Compile Include="R2AlertType.cs" />
+    <Compile Include="R2AlgoNote.cs" />
+    <Compile Include="R2ArrowDisplayState.cs" />
+    <Compile Include="SpecialGlucoseValues.cs" />
+    <Compile Include="BytesTransferredEventHandler.cs" />
+    <Compile Include="ReceiverPort.cs" />
+    <Compile Include="BaseEmptyPacket.cs" />
+    <Compile Include="Base1BytePacket.cs" />
+    <Compile Include="Base2BytePacket.cs" />
+    <Compile Include="Base4BytePacket.cs" />
+    <Compile Include="Base4BytePairPacket.cs" />
+    <Compile Include="Base8BytePacket.cs" />
+    <Compile Include="BaseHWConfigPacket.cs" />
+    <Compile Include="BaseFWHeaderPacket.cs" />
+    <Compile Include="BaseSettingsPacket.cs" />
+    <Compile Include="BaseSettings2Packet.cs" />
+    <Compile Include="BaseSettings3Packet.cs" />
+    <Compile Include="BaseSettings4Packet.cs" />
+    <Compile Include="BaseSettings5Packet.cs" />
+    <Compile Include="BaseSettings6Packet.cs" />
+    <Compile Include="PacketAckNakResponse.cs" />
+    <Compile Include="PacketReadBlockCommand.cs" />
+    <Compile Include="PacketWriteBlockCommand.cs" />
+    <Compile Include="PacketEraseBlockCommand.cs" />
+    <Compile Include="PacketReadFirmwareCommand.cs" />
+    <Compile Include="PacketWriteFirmwareCommand.cs" />
+    <Compile Include="PacketAckResponse.cs" />
+    <Compile Include="PacketReadHWConfigCommand.cs" />
+    <Compile Include="PacketReadHWConfigResponse.cs" />
+    <Compile Include="PacketWriteHWConfigCommand.cs" />
+    <Compile Include="PacketReadBiosCommand.cs" />
+    <Compile Include="PacketWriteBiosCommand.cs" />
+    <Compile Include="PacketReadBiosHeaderCommand.cs" />
+    <Compile Include="PacketReadFirmwareHeaderCommand.cs" />
+    <Compile Include="PacketReadFirmwareHeaderResponse.cs" />
+    <Compile Include="PacketReadRTCCommand.cs" />
+    <Compile Include="PacketWriteRTCCommand.cs" />
+    <Compile Include="PacketResetReceiverCommand.cs" />
+    <Compile Include="PacketReadSettingsCommand.cs" />
+    <Compile Include="PacketReadSettingsResponse.cs" />
+    <Compile Include="PacketReadSettings2Response.cs" />
+    <Compile Include="PacketReadSettings3Response.cs" />
+    <Compile Include="PacketReadSettings4Response.cs" />
+    <Compile Include="PacketReadSettings5Response.cs" />
+    <Compile Include="PacketReadSettings6Response.cs" />
+    <Compile Include="PacketWriteSettingsCommand.cs" />
+    <Compile Include="PacketWriteSettings2Command.cs" />
+    <Compile Include="PacketWriteTrimCommand.cs" />
+    <Compile Include="PacketReadInternalTimeCommand.cs" />
+    <Compile Include="PacketInvalidParamResponse.cs" />
+    <Compile Include="PacketNakResponse.cs" />
+    <Compile Include="PacketInvalidCommandResponse.cs" />
+    <Compile Include="PacketReadDatabaseCommand.cs" />
+    <Compile Include="PacketReadDatabaseResponse.cs" />
+    <Compile Include="PacketEnableTransmitterCommand.cs" />
+    <Compile Include="PacketIsEventLogEmptyCommand.cs" />
+    <Compile Include="PacketIsErrorLogEmptyCommand.cs" />
+    <Compile Include="PacketAmIFirmwareCommand.cs" />
+    <Compile Include="PacketReadDatabaseRevisionCommand.cs" />
+    <Compile Include="PacketReadADCCommand.cs" />
+    <Compile Include="PacketReadADCResponse.cs" />
+    <Compile Include="PacketReadBootFailureReasonsCommand.cs" />
+    <Compile Include="PacketSleepUntilResetCommand.cs" />
+    <Compile Include="PacketReadLastButtonPressedCommand.cs" />
+    <Compile Include="PacketReadByteResponse.cs" />
+    <Compile Include="PacketPeekMemoryCommand.cs" />
+    <Compile Include="PacketReadSensorImplantDateCommand.cs" />
+    <Compile Include="PacketReadDateResponse.cs" />
+    <Compile Include="PacketWriteSensorImplantDateCommand.cs" />
+    <Compile Include="PacketReadNumberOf3DayLicensesCommand.cs" />
+    <Compile Include="PacketReadNumberOf7DayLicensesCommand.cs" />
+    <Compile Include="PacketReadUInt32Response.cs" />
+    <Compile Include="PacketReadTransmitterIdCommand.cs" />
+    <Compile Include="PacketWriteTransmitterIdCommand.cs" />
+    <Compile Include="PacketReadLowGlucoseThresholdCommand.cs" />
+    <Compile Include="PacketWriteLowGlucoseThresholdCommand.cs" />
+    <Compile Include="PacketReadHighGlucoseThresholdCommand.cs" />
+    <Compile Include="PacketWriteHighGlucoseThresholdCommand.cs" />
+    <Compile Include="PacketReadBlindedModeCommand.cs" />
+    <Compile Include="PacketWriteBlindedModeCommand.cs" />
+    <Compile Include="PacketReadDisplayTimeOffsetCommand.cs" />
+    <Compile Include="PacketWriteDisplayTimeOffsetCommand.cs" />
+    <Compile Include="PacketReadGMTCommand.cs" />
+    <Compile Include="PacketWriteGMTCommand.cs" />
+    <Compile Include="R2ReceiverValues.cs" />
+    <Compile Include="DateTimePair.cs" />
+    <Compile Include="R2ReceiverTools.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SiLabs 6\30 VCP Driver.zip" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

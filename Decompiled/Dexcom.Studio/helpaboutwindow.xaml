@@ -1,0 +1,37 @@
+<Window x:Class="Dexcom.Tools.DataManager.HelpAboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        xmlns:dexclient="clr-namespace:Dexcom.Client.Common;assembly=Dexcom.Client.Common"
+        x:Name="thisWindow" Title="Help About" Height="Auto" Width="450" MinWidth="450" MaxWidth="800"
+        MinHeight="250" MaxHeight="800" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner"
+        Icon="/Dexcom.Studio;component/App.ico" Background="{DynamicResource LightBrush}"
+        WindowStyle="ToolWindow" ResizeMode="CanResize" FontSize="12">
+  <UIElement.InputBindings>
+    <KeyBinding Command="Close" Key="Esc"/>
+  </UIElement.InputBindings>
+  <UIElement.CommandBindings>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Close}"/>
+  </UIElement.CommandBindings>
+  <FrameworkElement.Resources>
+    <dexclient:ResourceDictionaryConverter x:Key="ResourceDictionaryConverter"/>
+  </FrameworkElement.Resources>
+  <Grid>
+    <DockPanel Margin="6" LastChildFill="true">
+      <Image DockPanel.Dock="Top" Stretch="Uniform" Margin="10" MaxWidth="550"
+             Source="/Dexcom.Studio;component/Resources/Dexcom-Registered.gif" VerticalAlignment="Center"
+             HorizontalAlignment="Center"/>
+      <StackPanel Margin="4">
+        <TextBlock Margin="4" HorizontalAlignment="Center" TextWrapping="Wrap"
+                   Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=HelpAboutWindow_Copyright, FallbackValue='Copyright here ...'}"/>
+        <TextBlock Name="m_ctrlVersion" Margin="4" HorizontalAlignment="Center" TextWrapping="Wrap"
+                   Text="Version: 12.0.0.45" TextAlignment="Center"/>
+        <TextBlock Margin="4" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
+                   Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=HelpAboutWindow_Usage, FallbackValue='Usage text here ...'}"/>
+        <TextBlock Margin="4" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"
+                   Text="{Binding ElementName=thisWindow, Path=CurrentCulture, Mode=OneWay, Converter={StaticResource ResourceDictionaryConverter}, ConverterParameter=HelpAboutWindow_Support, FallbackValue='Support text here ...'}"/>
+      </StackPanel>
+    </DockPanel>
+  </Grid>
+</Window>

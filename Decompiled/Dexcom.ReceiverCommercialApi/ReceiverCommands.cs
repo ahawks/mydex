@@ -1,0 +1,60 @@
+﻿// Type: Dexcom.ReceiverApi.ReceiverCommands
+// Assembly: Dexcom.ReceiverCommercialApi, Version=4.0.0.1, Culture=neutral, PublicKeyToken=71077f6d94a459dc
+// MVID: 3F623F65-908D-40A7-87D3-892C5D1FFA2E
+// Assembly location: C:\Program Files (x86)\Dexcom\Dexcom Studio 12.0.3.43\Dexcom.ReceiverCommercialApi.dll
+
+namespace Dexcom.ReceiverApi
+{
+  public enum ReceiverCommands : byte
+  {
+    Null = (byte) 0,
+    Ack = (byte) 1,
+    Nak = (byte) 2,
+    InvalidCommand = (byte) 3,
+    InvalidParam = (byte) 4,
+    IncompletePacketReceived = (byte) 5,
+    ReceiverError = (byte) 6,
+    InvalidMode = (byte) 7,
+    Ping = (byte) 10,
+    ReadFirmwareHeader = (byte) 11,
+    ReadDatabaseParitionInfo = (byte) 15,
+    ReadDatabasePageRange = (byte) 16,
+    ReadDatabasePages = (byte) 17,
+    ReadDatabasePageHeader = (byte) 18,
+    ReadTransmitterID = (byte) 25,
+    WriteTransmitterID = (byte) 26,
+    ReadLanguage = (byte) 27,
+    WriteLanguage = (byte) 28,
+    ReadDisplayTimeOffset = (byte) 29,
+    WriteDisplayTimeOffset = (byte) 30,
+    ReadRTC = (byte) 31,
+    ResetReceiver = (byte) 32,
+    ReadBatteryLevel = (byte) 33,
+    ReadSystemTime = (byte) 34,
+    ReadSystemTimeOffset = (byte) 35,
+    WriteSystemTime = (byte) 36,
+    ReadGlucoseUnit = (byte) 37,
+    WriteGlucoseUnit = (byte) 38,
+    ReadBlindedMode = (byte) 39,
+    WriteBlindedMode = (byte) 40,
+    ReadClockMode = (byte) 41,
+    WriteClockMode = (byte) 42,
+    ReadDeviceMode = (byte) 43,
+    EraseDatabase = (byte) 45,
+    ShutdownReceiver = (byte) 46,
+    WritePCParameters = (byte) 47,
+    ReadBatteryState = (byte) 48,
+    ReadHardwareBoardId = (byte) 49,
+    EnterFirmwareUpgradeMode = (byte) 50,
+    ReadFlashPage = (byte) 51,
+    WriteFlashPage = (byte) 52,
+    EnterSambaAccessMode = (byte) 53,
+    ReadFirmwareSettings = (byte) 54,
+    ReadEnableSetUpWizardFlag = (byte) 55,
+    WriteEnableSetUpWizardFlag = (byte) 56,
+    ReadSetUpWizardState = (byte) 57,
+    WriteSetUpWizardState = (byte) 58,
+    MaxCommand = (byte) 59,
+    MaxPossibleCommand = (byte) 255,
+  }
+}

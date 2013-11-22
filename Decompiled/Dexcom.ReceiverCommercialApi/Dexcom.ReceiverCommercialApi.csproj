@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Program Files (x86)\Dexcom\Dexcom Studio 12.0.3.43\Dexcom.ReceiverCommercialApi.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D206B745-BB1F-4602-B795-FD0BBAFAD1A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Dexcom.ReceiverCommercialApi</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>4.0.0.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Dexcom.ReceiverApi</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dexcom.Common">
+      <HintPath>lib\Dexcom.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+    <Reference Include="Dexcom.Common.Data">
+      <HintPath>lib\Dexcom.Common.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ReceiverApi.cs" />
+    <Compile Include="XPartitionInfo.cs" />
+    <Compile Include="XPageHeader.cs" />
+    <Compile Include="XPage.cs" />
+    <Compile Include="PacketTools.cs" />
+    <Compile Include="BytesTransferredEventHandler.cs" />
+    <Compile Include="ReceiverPort.cs" />
+    <Compile Include="Win32PortIO.cs" />
+    <Compile Include="DeviceRegistryInfo.cs" />
+    <Compile Include="GlobalReceiverRegistryTools.cs" />
+    <Compile Include="ReceiverDatabaseRecordsParser.cs" />
+    <Compile Include="DownloadReceiverHelper.cs" />
+    <Compile Include="ReceiverTools.cs" />
+    <Compile Include="XFirmwareHeader.cs" />
+    <Compile Include="UsbComPort.cs" />
+    <Compile Include="XPCParameterRecord.cs" />
+    <Compile Include="XFirmwareSettings.cs" />
+    <Compile Include="XPartition.cs" />
+    <Compile Include="ReceiverValues.cs" />
+    <Compile Include="IGenericRecord.cs" />
+    <Compile Include="ManufacturingParameterRecord.cs" />
+    <Compile Include="PCParameterRecord.cs" />
+    <Compile Include="EGVRecord.cs" />
+    <Compile Include="InsertionTimeRecord.cs" />
+    <Compile Include="MeterRecord.cs" />
+    <Compile Include="EventRecord.cs" />
+    <Compile Include="ReceiverCommands.cs" />
+    <Compile Include="ReceiverRecordType.cs" />
+    <Compile Include="ReceiverRecordTypeFlags.cs" />
+    <Compile Include="UserEvent.cs" />
+    <Compile Include="Exercise.cs" />
+    <Compile Include="Health.cs" />
+    <Compile Include="LanguageType.cs" />
+    <Compile Include="GlucoseUnitType.cs" />
+    <Compile Include="BlindedModeType.cs" />
+    <Compile Include="ClockModeType.cs" />
+    <Compile Include="DeviceModeType.cs" />
+    <Compile Include="BatteryState.cs" />
+    <Compile Include="TrendArrow.cs" />
+    <Compile Include="NoiseMode.cs" />
+    <Compile Include="SensorSessionState.cs" />
+    <Compile Include="SpecialGlucoseValues.cs" />
+    <Compile Include="SetUpWizardState.cs" />
+    <Compile Include="IGenericReceiverRecord.cs" />
+    <Compile Include="DatabasePageHeader.cs" />
+    <Compile Include="DatabasePage.cs" />
+    <Compile Include="DatabasePageRange.cs" />
+    <Compile Include="ReceiverManufacturingParameterRecord.cs" />
+    <Compile Include="ReceiverPCParameterRecord.cs" />
+    <Compile Include="ReceiverEGVRecord.cs" />
+    <Compile Include="ReceiverInsertionTimeRecord.cs" />
+    <Compile Include="ReceiverMeterRecord.cs" />
+    <Compile Include="ReceiverUserEventRecord.cs" />
+    <Compile Include="XManufacturingParameterRecord.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DexCom32VCP1002.exe" />
+    <EmbeddedResource Include="DexCom64VCP1002.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

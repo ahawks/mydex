@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Program Files (x86)\Dexcom\Dexcom Studio 12.0.3.43\Dexcom.Common.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9108BCB8-B3B6-47E4-A623-B41F603187EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Dexcom.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>4.0.0.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dexcom\Common\Schedule.cs" />
+    <Compile Include="Dexcom\Common\IProgramContext.cs" />
+    <Compile Include="Dexcom\Common\ProgramContext.cs" />
+    <Compile Include="Dexcom\Common\PerformanceTimer.cs" />
+    <Compile Include="Dexcom\Common\ScriptProgressHandler.cs" />
+    <Compile Include="Dexcom\Common\CommandProgressHandler.cs" />
+    <Compile Include="Dexcom\Common\IScriptCommand.cs" />
+    <Compile Include="Dexcom\Common\EventUtils.cs" />
+    <Compile Include="Dexcom\Common\OnlineGuidConverter.cs" />
+    <Compile Include="Dexcom\Common\CommonExtensions.cs" />
+    <Compile Include="Dexcom\Common\GlobalizationUtils.cs" />
+    <Compile Include="Dexcom\Common\DaysOfWeek.cs" />
+    <Compile Include="Dexcom\Common\LocalizationKeyAttribute.cs" />
+    <Compile Include="Dexcom\Common\AsynchronousQueue`1.cs" />
+    <Compile Include="Dexcom\Common\XObject.cs" />
+    <Compile Include="Dexcom\Common\XmlConfigurationSectionHandler.cs" />
+    <Compile Include="Dexcom\Common\FileUtils.cs" />
+    <Compile Include="Dexcom\Common\AssemblyUtils.cs" />
+    <Compile Include="Dexcom\Common\XCollection`1.cs" />
+    <Compile Include="Dexcom\Common\DatabaseType.cs" />
+    <Compile Include="Dexcom\Common\GenderType.cs" />
+    <Compile Include="Dexcom\Common\LockOwnerType.cs" />
+    <Compile Include="Dexcom\Common\CommonValues.cs" />
+    <Compile Include="Dexcom\Common\ProgressEventHandler.cs" />
+    <Compile Include="Dexcom\Common\ProgressEventArgs.cs" />
+    <Compile Include="Dexcom\Common\DexComException.cs" />
+    <Compile Include="Dexcom\Common\OnlineException.cs" />
+    <Compile Include="Dexcom\Common\TimedOutException.cs" />
+    <Compile Include="Dexcom\Common\ResourcesManager`1.cs" />
+    <Compile Include="Dexcom\Common\ColumnInfoAttribute.cs" />
+    <Compile Include="Dexcom\Common\IActivationServiceProvider.cs" />
+    <Compile Include="Dexcom\Common\ActivationCodeGenerator.cs" />
+    <Compile Include="Dexcom\Common\CommonTools.cs" />
+    <Compile Include="Dexcom\Common\MathUtils.cs" />
+    <Compile Include="Dexcom\Common\LogEntryCategory.cs" />
+    <Compile Include="Dexcom\Common\LogEntry.cs" />
+    <Compile Include="Dexcom\Common\SecurityUtils.cs" />
+    <Compile Include="Dexcom\Common\StringUtils.cs" />
+    <Compile Include="Dexcom\Common\ExceptionType.cs" />
+    <Compile Include="Dexcom\Common\ExceptionSeverity.cs" />
+    <Compile Include="Dexcom\Common\ExceptionCategory.cs" />
+    <Compile Include="Dexcom\Common\ExceptionInfo.cs" />
+    <Compile Include="Dexcom\Common\Crc.cs" />
+    <Compile Include="Dexcom\Common\RemoteService.cs" />
+    <Compile Include="Dexcom\Common\ServiceWorker\IServiceWorker.cs" />
+    <Compile Include="Dexcom\Common\ServiceWorker\BaseServiceWorker.cs" />
+    <Compile Include="CSUACSelfElevation\UacSelfEvaluation.cs" />
+    <Compile Include="CSUACSelfElevation\TOKEN_INFORMATION_CLASS.cs" />
+    <Compile Include="CSUACSelfElevation\WELL_KNOWN_SID_TYPE.cs" />
+    <Compile Include="CSUACSelfElevation\SECURITY_IMPERSONATION_LEVEL.cs" />
+    <Compile Include="CSUACSelfElevation\TOKEN_ELEVATION_TYPE.cs" />
+    <Compile Include="CSUACSelfElevation\SID_AND_ATTRIBUTES.cs" />
+    <Compile Include="CSUACSelfElevation\TOKEN_ELEVATION.cs" />
+    <Compile Include="CSUACSelfElevation\TOKEN_MANDATORY_LABEL.cs" />
+    <Compile Include="CSUACSelfElevation\SafeTokenHandle.cs" />
+    <Compile Include="CSUACSelfElevation\NativeMethods.cs" />
+    <Compile Include="InternetTime\_LeapIndicator.cs" />
+    <Compile Include="InternetTime\_Mode.cs" />
+    <Compile Include="InternetTime\_Stratum.cs" />
+    <Compile Include="InternetTime\SNTPClient.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

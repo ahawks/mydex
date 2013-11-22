@@ -1,0 +1,47 @@
+<Window x:Class="Dexcom.Tools.DataManager.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kit="http://schemas.microsoft.com/wpf/2008/toolkit"
+        x:Name="MessageWin" Title="Message Window" Height="Auto" Width="Auto" MinWidth="250"
+        MinHeight="100" MaxWidth="600" MaxHeight="800" SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner" Icon="/Dexcom.Studio;component/App.ico" Background="White"
+        WindowStyle="ToolWindow" ResizeMode="NoResize" FontSize="12" ShowInTaskbar="false">
+  <UIElement.InputBindings>
+    <KeyBinding Command="Close" Key="Esc"/>
+  </UIElement.InputBindings>
+  <UIElement.CommandBindings>
+    <CommandBinding Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"
+                    Command="{x:Static ApplicationCommands.Close}"/>
+  </UIElement.CommandBindings>
+  <FrameworkElement.Resources>
+    <ResourceDictionary/>
+  </FrameworkElement.Resources>
+  <Grid>
+    <StackPanel Orientation="Vertical">
+      <Border Name="m_ctrlMessageTitleBorder" BorderThickness="0"
+              Background="{DynamicResource LightBrushFlippedVertical}">
+        <TextBlock Name="m_ctrlMessageTitle" MaxHeight="150" Margin="4,4,20,4" Text="This is the title."
+                   TextWrapping="Wrap" MaxWidth="540" HorizontalAlignment="Left"/>
+      </Border>
+      <DockPanel Margin="15">
+        <Image Name="m_ctrlImageBox" DockPanel.Dock="Left" MaxWidth="32" MaxHeight="32" Margin="6"
+               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <ScrollViewer DockPanel.Dock="Right" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto"
+                      MaxWidth="512" MaxHeight="500">
+          <TextBlock Name="m_ctrlMessageBlock" Margin="6" MaxWidth="500" TextWrapping="Wrap" VerticalAlignment="Top"
+                     HorizontalAlignment="Left" Text="This is the message."/>
+        </ScrollViewer>
+      </DockPanel>
+      <Grid Background="{DynamicResource LightBrush}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="4,6">
+          <Button Click="m_ctrlButton1_Click" Name="m_ctrlButton1" MinWidth="100" Padding="6,3" Margin="4"
+                  Visibility="Collapsed">Button1</Button>
+          <Button Click="m_ctrlButton2_Click" Name="m_ctrlButton2" MinWidth="100" Padding="6,3" Margin="4"
+                  Visibility="Collapsed">Button2</Button>
+          <Button Click="m_ctrlButton3_Click" Name="m_ctrlButton3" MinWidth="100" Padding="6,3" Margin="4"
+                  Visibility="Collapsed">Button3</Button>
+        </StackPanel>
+      </Grid>
+    </StackPanel>
+  </Grid>
+</Window>

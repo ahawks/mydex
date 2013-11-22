@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Program Files (x86)\Dexcom\Dexcom Studio 12.0.3.43\Dexcom.Common.Data.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E6F533B-8EF4-4903-9DCD-D302B025A5D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Dexcom.Common.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>4.0.0.1</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Dexcom.Common.Data</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dexcom.Common">
+      <HintPath>lib\Dexcom.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="XSession.cs" />
+    <Compile Include="XUserGroup.cs" />
+    <Compile Include="XReceiverRecord.cs" />
+    <Compile Include="XLockList.cs" />
+    <Compile Include="XSensorSessionData.cs" />
+    <Compile Include="XUserGroupMembers.cs" />
+    <Compile Include="XFolderScan.cs" />
+    <Compile Include="XPatientSettings.cs" />
+    <Compile Include="XPrivilegeGroupMembers.cs" />
+    <Compile Include="XMeterData.cs" />
+    <Compile Include="XA1cData.cs" />
+    <Compile Include="XGlucoseRange.cs" />
+    <Compile Include="XFileTransferChunk.cs" />
+    <Compile Include="IGenericData.cs" />
+    <Compile Include="DateTimePair.cs" />
+    <Compile Include="DeviceInformation.cs" />
+    <Compile Include="A1cData.cs" />
+    <Compile Include="BlindTransitionData.cs" />
+    <Compile Include="EventData.cs" />
+    <Compile Include="GlucoseDataStruct.cs" />
+    <Compile Include="GlucoseData.cs" />
+    <Compile Include="MeterData.cs" />
+    <Compile Include="SensorSessionData.cs" />
+    <Compile Include="TimeOffsetData.cs" />
+    <Compile Include="XFolderInfo.cs" />
+    <Compile Include="XPrivilegeGroupUsers.cs" />
+    <Compile Include="XOnlineContext.cs" />
+    <Compile Include="XFileInfo.cs" />
+    <Compile Include="XComputerInfo.cs" />
+    <Compile Include="XTimeOffsetData.cs" />
+    <Compile Include="XPatientInformation.cs" />
+    <Compile Include="XDeviceInformation.cs" />
+    <Compile Include="ADSI.cs" />
+    <Compile Include="XQueryResult.cs" />
+    <Compile Include="XDeviceSupportAuthorization.cs" />
+    <Compile Include="DataTools.cs" />
+    <Compile Include="XPatientContext.cs" />
+    <Compile Include="XTimeOfDayRange.cs" />
+    <Compile Include="ReceiverDataTools.cs" />
+    <Compile Include="XDeviceDownloadEntry.cs" />
+    <Compile Include="XUpdateQueryInfo.cs" />
+    <Compile Include="XQueryRequest.cs" />
+    <Compile Include="XApplicationInfo.cs" />
+    <Compile Include="XUser.cs" />
+    <Compile Include="XSessionList.cs" />
+    <Compile Include="XRepositoryWatchList.cs" />
+    <Compile Include="XRepositoryWatchEntry.cs" />
+    <Compile Include="XPrivilegeGroup.cs" />
+    <Compile Include="XLoginData.cs" />
+    <Compile Include="XGroupMember.cs" />
+    <Compile Include="XBlindTransitionData.cs" />
+    <Compile Include="XFileEntry.cs" />
+    <Compile Include="XGlucoseData.cs" />
+    <Compile Include="XEventData.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="XRepositoryInfo.cs" />
+    <Compile Include="XLock.cs" />
+    <Compile Include="XFileTransfer.cs" />
+    <Compile Include="MinRangeOperator.cs" />
+    <Compile Include="MaxRangeOperator.cs" />
+    <Compile Include="GlucoseRange.cs" />
+    <Compile Include="TimeOfDayRange.cs" />
+    <Compile Include="SensorCriteria.cs" />
+    <Compile Include="SensorStats.cs" />
+    <Compile Include="GlucoseRangeStatsPair.cs" />
+    <Compile Include="TimesOfTheDayStatsPair.cs" />
+    <Compile Include="TimesOfTheDayWithGlucoseRangeStats.cs" />
+    <Compile Include="HourlyCalculator.cs" />
+    <Compile Include="TimesOfTheDayCalculator.cs" />
+    <Compile Include="GlucoseRangesCalculator.cs" />
+    <Compile Include="TimesOfTheDayWithGlucoseRangesCalculator.cs" />
+    <Compile Include="XPatientAppData.cs" />
+    <Compile Include="XDeviceDownload.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
