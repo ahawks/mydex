@@ -7,8 +7,7 @@ import receiver_commands as c
 
 baud_rates = {
     'unknown': 0,
-    'firmware': 38400,
-    'bios': 115200
+    'firmware': 115200
 }
 
 
@@ -29,15 +28,37 @@ def find_receiver():
         if 'DexCom' in p[1]:
             return p[0]
 
-    #matches = glob.glob('/dev/tty.usbmodem*')
-    # if matches:
-    #     return matches[0]
-    # else:
-    #     raise Exception('No receiver connected')
-    
 
+def store_bytes(value, targetData, targetOffset):
+    targetData[targetOffset] = value & 255
+    targetData[targetOffset + 1] = value >> 8 & 255
+    targetData[targetOffset + 2] = value >> 16 & 255
+    targetData[targetOffset + 3] = value >> 24 & 255
+    targetData[targetOffset + 4] = value >> 32 & 255
+    targetData[targetOffset + 5] = value >> 40 & 255
+    targetData[targetOffset + 6] = value >> 48 & 255
+    targetData[targetOffset + 7] = value >> 56 & 255
+    return 8
+
+def build_packet(command):
+    MaxPayloadLength = 1584
+    MinPacketLength = 6
+    MaxPacketLength = 1590
+
+    packet = bytearray(1590)
+    num = 6;
+    packet[0] = 1
+    packet[1] = num
+    packet[3] = command
+    
+    crc = crc16.crc16xmodem(str(packet)[0:num-2])
+    store_bytes(crc, packet, num-2)
+
+    return packet
+
+    
 def send(ser, value):
-    packet = [1, value, 0, 0]
+    
     byte_str = ''.join([chr(b) for b in packet])
     crc = crc16.crc16xmodem(byte_str)
     byte_str += struct.pack('H', crc)
@@ -60,7 +81,8 @@ def close(ser):
 
 def full_test():
     ser = connect()
-    send(ser, c.READ_LOW_GLUCOSE_THRESHOLD)
+    packet = build_packet(17)
+    ser.write(packet)
     print read(ser)
 
 if __name__ == '__main__':
