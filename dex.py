@@ -40,7 +40,14 @@ def store_bytes(value, targetData, targetOffset):
     targetData[targetOffset + 7] = value >> 56 & 255
     return 8
 
-def build_packet(command):
+def build_packet(command, payload=None):
+    #todo: In C#, they overload this function based on payload type. 
+    # no payload: num=6
+    # byte: num=7
+    # short/ushort: num=8
+    # int/uint: num=10
+    # long/ulong: num=14
+    # there's even a case for payload, payload2
     MaxPayloadLength = 1584
     MinPacketLength = 6
     MaxPacketLength = 1590
