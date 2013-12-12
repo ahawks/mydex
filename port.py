@@ -68,24 +68,20 @@ class DexcomG4():
         
         crc = crc16.crc16xmodem(str(packet)[0:num-2])
         self.store_bytes(crc, packet, num-2)
-
         return packet
 
-        
     def send(self, value):
         packet = self.build_packet(value)
         byte_str = ''.join([chr(b) for b in packet])
         crc = crc16.crc16xmodem(byte_str)
         byte_str += struct.pack('H', crc)
-            [ord(x) for x in byte_str],
-            len(byte_str))
         r = self.port.write(byte_str)
         self.port.flush()
         print 'Sent %s as %s bytes' % (value, r)
 
 
     def read(self):
-        print 'Trying to read....'
+        print 'Reading receiver response...'
         r = self.port.read(100)
         return [ord(x) for x in r]
 
