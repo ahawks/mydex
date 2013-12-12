@@ -77,12 +77,11 @@ class DexcomG4():
         byte_str = ''.join([chr(b) for b in packet])
         crc = crc16.crc16xmodem(byte_str)
         byte_str += struct.pack('H', crc)
-        print 'Sending %s. (len %s)' % (
             [ord(x) for x in byte_str],
             len(byte_str))
         r = self.port.write(byte_str)
         self.port.flush()
-        print 'Sent %s bytes' % r
+        print 'Sent %s as %s bytes' % (value, r)
 
 
     def read(self):
@@ -93,16 +92,3 @@ class DexcomG4():
 
     def disconnect(self):
         self.port.close()
-
-def full_test():
-    g4 = DexcomG4()
-    g4.send(c.READ_BATTERY_LEVEL)
-    print g4.read()
-
-if __name__ == '__main__':
-    full_test()
-    # references:
-    # http://eli.thegreenplace.net/2009/08/20/frames-and-protocols-for-the-serial-port-in-python/
-    # https://pypi.python.org/pypi/crc16/0.1.1
-    #ser.write(msg)
-
